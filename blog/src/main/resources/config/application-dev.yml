@@ -43,7 +43,7 @@ spring:
       indent-output: true
   data:
     mongodb:
-      uri: mongodb://blog:blog@192.168.56.101:27017/blog?socketTimeoutMS=1000&authSource=blog
+      uri: mongodb://blog:blog@localhost:27017/blog?socketTimeoutMS=1000&authSource=blog
       database: blog
   mail:
     host: localhost
