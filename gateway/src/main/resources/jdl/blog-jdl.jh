@@ -1,0 +1,11 @@
+entity Author {
+	name String required
+}
+
+entity Blog {
+    text String required maxlength(500)
+}
+
+relationship OneToMany {
+	Author{blogs} to Blog{author(name)}
+}
