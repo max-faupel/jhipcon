@@ -24,7 +24,7 @@ spec:
             - |
               while true
               do
-                rt=$(nc -z -w 1 gateway-mysql 3306)
+                rt=$(nc -z -w 1 gateway-postgresql 5432)
                 if [ $? -eq 0 ]; then
                   echo "DB is UP"
                   break
@@ -48,11 +48,14 @@ spec:
             - name: EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE
               value: http://admin:${jhipster.registry.password}@jhipster-registry.jhipcon.svc.cluster.local:8761/eureka/
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://gateway-mysql:3306/gateway?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false
+              value: jdbc:postgresql://gateway-postgresql.jhipcon.svc.cluster.local:5432/gateway
             - name: SPRING_DATASOURCE_USERNAME
               value: gateway
             - name: SPRING_DATASOURCE_PASSWORD
-              value: gateway
+              valueFrom:
+                secretKeyRef:
+                  name: gateway-postgresql
+                  key: postgresql-password
             - name: SPRING_SLEUTH_PROPAGATION_KEYS
               value: 'x-request-id,x-ot-span-context'
             - name: JAVA_OPTS
@@ -71,8 +74,8 @@ spec:
             httpGet:
               path: /management/health
               port: http
-            initialDelaySeconds: 120
-            periodSeconds: 60
+            initialDelaySeconds: 20
+            periodSeconds: 15
             failureThreshold: 6
           livenessProbe:
             httpGet:
