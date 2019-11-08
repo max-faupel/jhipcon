@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.jhipcon"
+    },
+    "jhipsterVersion": "6.2.0",
+    "applicationType": "microservice",
+    "baseName": "blog",
+    "packageName": "com.jhipcon",
+    "packageFolder": "com/jhipcon",
+    "serverPort": "8181",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ODhkM2EyZmYwNjkzODllZDUxMDYyYzNhMjQ1MDE1NTM0Y2UyYTc0MGM5ZmZhODYwNTdhYzBhMTFhOWRiY2EyY2RjMzI5ZDJjMmZkYjBlYWZhMGU1MDg1MTZjYjYxNTRkZmMwNmNmMTc4YmM3NThiOWM3N2MwNjYzN2NkYzBmNjg=",
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

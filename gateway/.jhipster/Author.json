@@ -1,0 +1,29 @@
+{
+    "name": "Author",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "blog",
+            "otherEntityRelationshipName": "author",
+            "relationshipName": "blogs"
+        }
+    ],
+    "changelogDate": "20190907225734",
+    "entityTableName": "author",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
