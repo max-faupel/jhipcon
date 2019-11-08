@@ -50,7 +50,17 @@ spec:
             - name: SPRING_DATA_MONGODB_DATABASE
               value: blog
             - name: SPRING_DATA_MONGODB_URI
-              value: 'mongodb://blog-mongodb-0.blog-mongodb.jhipcon:27017'
+              value: 'mongodb://blog-mongodb-0.blog-mongodb.jhipcon:27017,blog-mongodb-1.blog-mongodb.jhipcon:27017,blog-mongodb-2.blog-mongodb.jhipcon:27017'
+            - name: JHIPSTER_METRICS_LOGS_ENABLED
+              value: 'true'
+            - name: JHIPSTER_LOGGING_LOGSTASH_ENABLED
+              value: 'true'
+            - name: JHIPSTER_LOGGING_LOGSTASH_HOST
+              value: jhipster-logstash
+            - name: SPRING_ZIPKIN_ENABLED
+              value: 'true'
+            - name: SPRING_ZIPKIN_BASE_URL
+              value: http://jhipster-zipkin
             - name: SPRING_SLEUTH_PROPAGATION_KEYS
               value: 'x-request-id,x-ot-span-context'
             - name: JAVA_OPTS
@@ -74,6 +84,6 @@ spec:
             failureThreshold: 6
           livenessProbe:
             httpGet:
-              path: /management/health
+              path: /management/info
               port: http
             initialDelaySeconds: 120

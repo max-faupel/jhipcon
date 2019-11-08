@@ -1,0 +1,22 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "blog",
+      "conference",
+      "gateway"
+    ],
+    "directoryPath": "C:\\Development\\jhipster\\tmp\\jhipcon/",
+    "clusteredDbApps": [
+      "blog"
+    ],
+    "serviceDiscoveryType": "eureka",
+    "jwtSecretKey": "MmI5NjAwMzlmMWI4NDIzOGNjYzM3ZTEwZDQzYzVkNWVkZjg3MGRlYmMxMDI4NjhkYjk4YWI0YWI1NDUzZjdjNzA2ZDY4YTc1M2E0Yzk1ZmZiYjQzNDZkOTUwNzgwNjJlMTQ2YQ==",
+    "dockerRepositoryName": "maximilianf",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "jhipcon",
+    "kubernetesServiceType": "LoadBalancer",
+    "ingressDomain": "",
+    "monitoring": "elk",
+    "istio": false
+  }
+}
