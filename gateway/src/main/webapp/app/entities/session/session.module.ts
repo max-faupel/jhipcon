@@ -1,16 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { GatewaySharedModule } from 'app/shared';
-import {
-  SessionComponent,
-  SessionDetailComponent,
-  SessionUpdateComponent,
-  SessionDeletePopupComponent,
-  SessionDeleteDialogComponent,
-  sessionRoute,
-  sessionPopupRoute
-} from './';
+import { GatewaySharedModule } from 'app/shared/shared.module';
+import { SessionComponent } from './session.component';
+import { SessionDetailComponent } from './session-detail.component';
+import { SessionUpdateComponent } from './session-update.component';
+import { SessionDeletePopupComponent, SessionDeleteDialogComponent } from './session-delete-dialog.component';
+import { sessionRoute, sessionPopupRoute } from './session.route';
 
 const ENTITY_STATES = [...sessionRoute, ...sessionPopupRoute];
 
@@ -23,7 +19,6 @@ const ENTITY_STATES = [...sessionRoute, ...sessionPopupRoute];
     SessionDeleteDialogComponent,
     SessionDeletePopupComponent
   ],
-  entryComponents: [SessionComponent, SessionUpdateComponent, SessionDeleteDialogComponent, SessionDeletePopupComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  entryComponents: [SessionDeleteDialogComponent]
 })
 export class GatewaySessionModule {}

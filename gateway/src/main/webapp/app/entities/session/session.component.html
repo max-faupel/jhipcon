@@ -8,21 +8,22 @@
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="sessions?.length === 0">
         <span>No sessions found</span>
     </div>
     <div class="table-responsive" *ngIf="sessions?.length > 0">
-        <table class="table table-striped">
+        <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
-            <th><span>ID</span></th>
-            <th><span>Title</span></th>
-            <th><span>Description</span></th>
-            <th><span>Start Date Time</span></th>
-            <th><span>End Date Time</span></th>
-            <th></th>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Title</span></th>
+            <th scope="col" ><span>Description</span></th>
+            <th scope="col" ><span>Start Date Time</span></th>
+            <th scope="col" ><span>End Date Time</span></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody>

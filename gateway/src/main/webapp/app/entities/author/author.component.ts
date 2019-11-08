@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { IAuthor } from 'app/shared/model/author.model';
-import { AccountService } from 'app/core';
+import { AccountService } from 'app/core/auth/account.service';
 import { AuthorService } from './author.service';
 
 @Component({
@@ -17,12 +18,7 @@ export class AuthorComponent implements OnInit, OnDestroy {
   currentAccount: any;
   eventSubscriber: Subscription;
 
-  constructor(
-    protected authorService: AuthorService,
-    protected jhiAlertService: JhiAlertService,
-    protected eventManager: JhiEventManager,
-    protected accountService: AccountService
-  ) {}
+  constructor(protected authorService: AuthorService, protected eventManager: JhiEventManager, protected accountService: AccountService) {}
 
   loadAll() {
     this.authorService
@@ -31,17 +27,14 @@ export class AuthorComponent implements OnInit, OnDestroy {
         filter((res: HttpResponse<IAuthor[]>) => res.ok),
         map((res: HttpResponse<IAuthor[]>) => res.body)
       )
-      .subscribe(
-        (res: IAuthor[]) => {
-          this.authors = res;
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .subscribe((res: IAuthor[]) => {
+        this.authors = res;
+      });
   }
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
+    this.accountService.identity().subscribe(account => {
       this.currentAccount = account;
     });
     this.registerChangeInAuthors();
@@ -57,9 +50,5 @@ export class AuthorComponent implements OnInit, OnDestroy {
 
   registerChangeInAuthors() {
     this.eventSubscriber = this.eventManager.subscribe('authorListModification', response => this.loadAll());
-  }
-
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
   }
 }

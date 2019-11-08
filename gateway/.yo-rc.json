@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "com.jhipcon"
     },
-    "jhipsterVersion": "6.2.0",
+    "jhipsterVersion": "6.4.1",
     "applicationType": "gateway",
     "baseName": "gateway",
     "packageName": "com.jhipcon",
@@ -37,6 +37,7 @@
     "dtoSuffix": "DTO",
     "otherModules": [],
     "enableTranslation": false,
-    "blueprints": []
+    "blueprints": [],
+    "embeddableLaunchScript": false
   }
 }

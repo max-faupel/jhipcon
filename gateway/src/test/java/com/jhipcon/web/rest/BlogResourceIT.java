@@ -165,7 +165,7 @@ public class BlogResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(blog.getId().intValue())))
-            .andExpect(jsonPath("$.[*].text").value(hasItem(DEFAULT_TEXT.toString())));
+            .andExpect(jsonPath("$.[*].text").value(hasItem(DEFAULT_TEXT)));
     }
     
     @Test
@@ -179,7 +179,7 @@ public class BlogResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(blog.getId().intValue()))
-            .andExpect(jsonPath("$.text").value(DEFAULT_TEXT.toString()));
+            .andExpect(jsonPath("$.text").value(DEFAULT_TEXT));
     }
 
     @Test

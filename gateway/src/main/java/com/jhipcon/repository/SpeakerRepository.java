@@ -1,5 +1,4 @@
 package com.jhipcon.repository;
-
 import com.jhipcon.domain.Speaker;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

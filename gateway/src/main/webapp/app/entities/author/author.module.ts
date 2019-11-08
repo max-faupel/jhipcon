@@ -1,23 +1,18 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { GatewaySharedModule } from 'app/shared';
-import {
-  AuthorComponent,
-  AuthorDetailComponent,
-  AuthorUpdateComponent,
-  AuthorDeletePopupComponent,
-  AuthorDeleteDialogComponent,
-  authorRoute,
-  authorPopupRoute
-} from './';
+import { GatewaySharedModule } from 'app/shared/shared.module';
+import { AuthorComponent } from './author.component';
+import { AuthorDetailComponent } from './author-detail.component';
+import { AuthorUpdateComponent } from './author-update.component';
+import { AuthorDeletePopupComponent, AuthorDeleteDialogComponent } from './author-delete-dialog.component';
+import { authorRoute, authorPopupRoute } from './author.route';
 
 const ENTITY_STATES = [...authorRoute, ...authorPopupRoute];
 
 @NgModule({
   imports: [GatewaySharedModule, RouterModule.forChild(ENTITY_STATES)],
   declarations: [AuthorComponent, AuthorDetailComponent, AuthorUpdateComponent, AuthorDeleteDialogComponent, AuthorDeletePopupComponent],
-  entryComponents: [AuthorComponent, AuthorUpdateComponent, AuthorDeleteDialogComponent, AuthorDeletePopupComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  entryComponents: [AuthorDeleteDialogComponent]
 })
 export class GatewayAuthorModule {}
