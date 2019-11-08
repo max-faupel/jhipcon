@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "com.jhipcon"
     },
-    "jhipsterVersion": "6.2.0",
+    "jhipsterVersion": "6.4.1",
     "applicationType": "microservice",
     "baseName": "conference",
     "packageName": "com.jhipcon",
@@ -34,6 +34,7 @@
     "clientPackageManager": "npm",
     "blueprints": [],
     "skipClient": true,
-    "skipUserManagement": true
+    "skipUserManagement": true,
+    "embeddableLaunchScript": false
   }
 }
