@@ -1,5 +1,4 @@
 package com.jhipcon.repository;
-
 import com.jhipcon.domain.Session;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;

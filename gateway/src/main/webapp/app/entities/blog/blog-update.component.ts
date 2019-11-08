@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -8,7 +10,7 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IBlog, Blog } from 'app/shared/model/blog.model';
 import { BlogService } from './blog.service';
 import { IAuthor } from 'app/shared/model/author.model';
-import { AuthorService } from 'app/entities/author';
+import { AuthorService } from 'app/entities/author/author.service';
 
 @Component({
   selector: 'jhi-blog-update',

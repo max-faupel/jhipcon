@@ -1,16 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { GatewaySharedModule } from 'app/shared';
-import {
-  SpeakerComponent,
-  SpeakerDetailComponent,
-  SpeakerUpdateComponent,
-  SpeakerDeletePopupComponent,
-  SpeakerDeleteDialogComponent,
-  speakerRoute,
-  speakerPopupRoute
-} from './';
+import { GatewaySharedModule } from 'app/shared/shared.module';
+import { SpeakerComponent } from './speaker.component';
+import { SpeakerDetailComponent } from './speaker-detail.component';
+import { SpeakerUpdateComponent } from './speaker-update.component';
+import { SpeakerDeletePopupComponent, SpeakerDeleteDialogComponent } from './speaker-delete-dialog.component';
+import { speakerRoute, speakerPopupRoute } from './speaker.route';
 
 const ENTITY_STATES = [...speakerRoute, ...speakerPopupRoute];
 
@@ -23,7 +19,6 @@ const ENTITY_STATES = [...speakerRoute, ...speakerPopupRoute];
     SpeakerDeleteDialogComponent,
     SpeakerDeletePopupComponent
   ],
-  entryComponents: [SpeakerComponent, SpeakerUpdateComponent, SpeakerDeleteDialogComponent, SpeakerDeletePopupComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  entryComponents: [SpeakerDeleteDialogComponent]
 })
 export class GatewaySpeakerModule {}

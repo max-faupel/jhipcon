@@ -1,7 +1,8 @@
-/* tslint:disable no-unused-expression */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SessionComponentsPage, SessionDeleteDialog, SessionUpdatePage } from './session.page-object';
 import * as path from 'path';
 
@@ -10,8 +11,8 @@ const expect = chai.expect;
 describe('Session e2e test', () => {
   let navBarPage: NavBarPage;
   let signInPage: SignInPage;
-  let sessionUpdatePage: SessionUpdatePage;
   let sessionComponentsPage: SessionComponentsPage;
+  let sessionUpdatePage: SessionUpdatePage;
   let sessionDeleteDialog: SessionDeleteDialog;
   const fileNameToUpload = 'logo-jhipster.png';
   const fileToUpload = '../../../../../../src/main/webapp/content/images/' + fileNameToUpload;

@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
+import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 
 import { ISession } from 'app/shared/model/session.model';
-import { AccountService } from 'app/core';
+import { AccountService } from 'app/core/auth/account.service';
 import { SessionService } from './session.service';
 
 @Component({
@@ -19,7 +20,6 @@ export class SessionComponent implements OnInit, OnDestroy {
 
   constructor(
     protected sessionService: SessionService,
-    protected jhiAlertService: JhiAlertService,
     protected dataUtils: JhiDataUtils,
     protected eventManager: JhiEventManager,
     protected accountService: AccountService
@@ -32,17 +32,14 @@ export class SessionComponent implements OnInit, OnDestroy {
         filter((res: HttpResponse<ISession[]>) => res.ok),
         map((res: HttpResponse<ISession[]>) => res.body)
       )
-      .subscribe(
-        (res: ISession[]) => {
-          this.sessions = res;
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .subscribe((res: ISession[]) => {
+        this.sessions = res;
+      });
   }
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
+    this.accountService.identity().subscribe(account => {
       this.currentAccount = account;
     });
     this.registerChangeInSessions();
@@ -66,9 +63,5 @@ export class SessionComponent implements OnInit, OnDestroy {
 
   registerChangeInSessions() {
     this.eventSubscriber = this.eventManager.subscribe('sessionListModification', response => this.loadAll());
-  }
-
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
   }
 }

@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { IBlog } from 'app/shared/model/blog.model';
-import { AccountService } from 'app/core';
+import { AccountService } from 'app/core/auth/account.service';
 import { BlogService } from './blog.service';
 
 @Component({
@@ -17,12 +18,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   currentAccount: any;
   eventSubscriber: Subscription;
 
-  constructor(
-    protected blogService: BlogService,
-    protected jhiAlertService: JhiAlertService,
-    protected eventManager: JhiEventManager,
-    protected accountService: AccountService
-  ) {}
+  constructor(protected blogService: BlogService, protected eventManager: JhiEventManager, protected accountService: AccountService) {}
 
   loadAll() {
     this.blogService
@@ -31,17 +27,14 @@ export class BlogComponent implements OnInit, OnDestroy {
         filter((res: HttpResponse<IBlog[]>) => res.ok),
         map((res: HttpResponse<IBlog[]>) => res.body)
       )
-      .subscribe(
-        (res: IBlog[]) => {
-          this.blogs = res;
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .subscribe((res: IBlog[]) => {
+        this.blogs = res;
+      });
   }
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
+    this.accountService.identity().subscribe(account => {
       this.currentAccount = account;
     });
     this.registerChangeInBlogs();
@@ -57,9 +50,5 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   registerChangeInBlogs() {
     this.eventSubscriber = this.eventManager.subscribe('blogListModification', response => this.loadAll());
-  }
-
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
   }
 }

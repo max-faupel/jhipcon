@@ -1,6 +1,5 @@
 package com.jhipcon.service.mapper;
 
-
 import com.jhipcon.GatewayApp;
 import com.jhipcon.domain.User;
 import com.jhipcon.service.dto.UserDTO;
