@@ -18,6 +18,11 @@ spec:
           name: jhipster-console
           ports:
             - containerPort: 5601
+          resources:
+            requests:
+              cpu: '100m'
+            limits:
+              cpu: '200m'
       restartPolicy: Always
 ---
 apiVersion: v1

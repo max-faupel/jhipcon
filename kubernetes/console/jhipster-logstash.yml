@@ -33,7 +33,11 @@ spec:
               protocol: UDP
             - containerPort: 5000
               protocol: TCP
-          resources: {}
+          resources:
+            requests:
+              cpu: '100m'
+            limits:
+              cpu: '200m'
       restartPolicy: Always
 ---
 apiVersion: v1

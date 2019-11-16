@@ -36,6 +36,11 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql/
+          resources:
+            requests:
+              cpu: '100m'
+            limits:
+              cpu: '200m'
 ---
 apiVersion: v1
 kind: Service

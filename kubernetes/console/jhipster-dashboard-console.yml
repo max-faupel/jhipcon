@@ -34,4 +34,9 @@ spec:
         - name: jhipster-import-dashboards
           image: jhipster/jhipster-import-dashboards:v4.1.0
           imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: '100m'
+            limits:
+              cpu: '200m'
       restartPolicy: OnFailure

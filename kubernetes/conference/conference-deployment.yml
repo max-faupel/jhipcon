@@ -66,10 +66,10 @@ spec:
           resources:
             requests:
               memory: '512Mi'
-              cpu: '500m'
+              cpu: '100m'
             limits:
               memory: '1Gi'
-              cpu: '1'
+              cpu: '200m'
           ports:
             - name: http
               containerPort: 8081
